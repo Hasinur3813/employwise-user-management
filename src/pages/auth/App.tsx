@@ -1,11 +1,10 @@
 import React from "react";
+import Login from "./pages/Login";
 
 const App: React.FC = () => {
   return (
     <div>
-      <h1 className="font-bold my-4 text-center text-4xl">
-        Hello React + Tailwindcss + Typescript
-      </h1>
+      <Login />
     </div>
   );
 };
