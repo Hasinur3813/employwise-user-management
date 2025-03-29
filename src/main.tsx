@@ -8,6 +8,7 @@ import Users from "./pages/users/Users.tsx";
 import UserUpdate from "./pages/UserUpdate/UserUpdate.tsx";
 import { Toaster } from "react-hot-toast";
 import PublicRoute from "./components/publicRoute/PublicRoute.tsx";
+import ErrorPage from "./pages/ErrorPage/ErrorPage.tsx";
 
 const router = createBrowserRouter([
   {
@@ -25,6 +26,10 @@ const router = createBrowserRouter([
   {
     path: "/users/:id",
     element: <UserUpdate />,
+  },
+  {
+    path: "*",
+    element: <ErrorPage />,
   },
 ]);
 
