@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useLocation, useNavigate } from "react-router";
+import { useNavigate } from "react-router";
 import axios from "axios";
 import UserCard from "../../components/UserCard";
 import toast from "react-hot-toast";
@@ -16,7 +16,6 @@ const Users: React.FC = () => {
   const [selectedUser, setSelectedUser] = useState<User | null>(null);
   const [showModal, setShowModal] = useState<boolean>(false);
   const navigate = useNavigate();
-  const location = useLocation();
   const { token, removeToken } = useToken();
 
   useEffect(() => {
@@ -25,7 +24,7 @@ const Users: React.FC = () => {
       return;
     }
     fetchUsers(page);
-  }, [navigate, page, token, location.pathname]);
+  }, [navigate, page, token]);
 
   const fetchUsers = (pageNumber: number) => {
     setLoading(true);

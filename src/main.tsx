@@ -7,11 +7,16 @@ import Login from "./pages/auth/Login.tsx";
 import Users from "./pages/users/Users.tsx";
 import UserUpdate from "./pages/UserUpdate/UserUpdate.tsx";
 import { Toaster } from "react-hot-toast";
+import PublicRoute from "./components/publicRoute/PublicRoute.tsx";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Login />,
+    element: (
+      <PublicRoute>
+        <Login />
+      </PublicRoute>
+    ),
   },
   {
     path: "/users",

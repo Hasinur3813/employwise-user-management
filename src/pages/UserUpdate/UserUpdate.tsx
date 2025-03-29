@@ -54,8 +54,18 @@ const EditUser: React.FC = () => {
     }
   };
 
-  if (loading) return <p className="text-center text-gray-600">Loading...</p>;
-  if (error) return <p className="text-center text-red-500">{error}</p>;
+  if (loading)
+    return (
+      <div className="min-h-screen flex justify-center ">
+        <p className="text-center text-midnight text-2xl mb-10">Loading...</p>
+      </div>
+    );
+  if (error)
+    return (
+      <div className="min-h-screen flex justify-center ">
+        <p className="text-center text-error text-2xl mb-10">Loading...</p>
+      </div>
+    );
 
   return (
     <div className="max-w-md mx-auto mt-10 p-6 border border-midnight/50 bg-white shadow-lg rounded-lg">
