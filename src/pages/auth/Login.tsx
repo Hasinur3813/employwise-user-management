@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router";
 import axios from "axios";
-import { toast, Toaster } from "react-hot-toast";
+import { toast } from "react-hot-toast";
+import useToken from "../../hooks/useToken";
 
 const Login: React.FC = () => {
   const [email, setEmail] = useState<string>("");
@@ -9,6 +10,7 @@ const Login: React.FC = () => {
   const [error, setError] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
   const navigate = useNavigate();
+  const { saveToken } = useToken();
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -21,7 +23,7 @@ const Login: React.FC = () => {
           password,
         }
       );
-      localStorage.setItem("token", response.data.token);
+      saveToken(response.data.token);
       toast.success("Succesfully Logged In");
       navigate("/users");
     } catch {
@@ -34,7 +36,6 @@ const Login: React.FC = () => {
 
   return (
     <div className="flex items-center justify-center h-screen bg-background">
-      <Toaster />
       <form
         className="bg-white p-8 rounded-lg shadow-lg w-96"
         onSubmit={handleLogin}

@@ -1,24 +1,13 @@
 import React from "react";
-
-interface User {
-  id: number;
-  avatar: string;
-  first_name: string;
-  last_name: string;
-  email: string;
-}
+import { Link } from "react-router";
+import { User } from "../type/UserType";
 
 interface UserCardProps {
   user: User;
-  handleDelete: (id: number) => void;
-  handleEdit: (id: number) => void;
+  confirmDelete: (user: User) => void;
 }
 
-const UserCard: React.FC<UserCardProps> = ({
-  user,
-  handleDelete,
-  handleEdit,
-}) => {
+const UserCard: React.FC<UserCardProps> = ({ user, confirmDelete }) => {
   return (
     <div className="bg-white p-4 rounded-lg shadow-md text-center">
       <img
@@ -31,15 +20,14 @@ const UserCard: React.FC<UserCardProps> = ({
       </h3>
       <p className="text-gray-600">{user.email}</p>
       <div className="mt-4 flex justify-center gap-3">
+        <Link to={`/users/${user.id}`}>
+          <button className="bg-tahiti cursor-pointer text-white px-4 py-2 rounded hover:bg-bermuda">
+            Edit
+          </button>
+        </Link>
         <button
-          className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
-          onClick={() => handleEdit(user.id)}
-        >
-          Edit
-        </button>
-        <button
-          className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600"
-          onClick={() => handleDelete(user.id)}
+          className="bg-error cursor-pointer text-white px-4 py-2 rounded hover:bg-error/80"
+          onClick={() => confirmDelete(user)}
         >
           Delete
         </button>
