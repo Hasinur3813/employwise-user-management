@@ -18,3 +18,5 @@
 - React
 - Axios
 - React Router
+- React Hot Toast
+- Tailwind CSS
